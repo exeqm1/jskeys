@@ -1,0 +1,238 @@
+:root {
+    --bg: #333333;
+    --panel: rgba(255, 255, 255, 0.08);
+    --text: #e9eff7;
+    --muted: rgba(233, 239, 247, 0.72);
+    --accent: #61dafb;
+    --radius: 12px;
+    --shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    --rojo-light: #b90504;
+    --celeste-light: #9edce4;
+    --blanquito: #e8e8e8;
+    --blanquito-hover: #c0c0c0;
+    --blanquito-active: #a0a0a0;
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Arimo", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: min(1120px, 96%);
+    margin: 0 auto;
+}
+
+header {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10px);
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 5px;
+}
+
+.brand {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.brand:hover {
+    transform: scale(1.05);
+    transition: transform 100ms ease-in-out, color 100ms ease-in-out;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.4rem 0.6rem;
+    border-radius: 999px;
+    transition: background 260ms ease-in-out, color 260ms ease-in-out;
+}
+
+nav a:hover {
+    background: rgba(97, 218, 251, 0.18);
+    color: var(--text);
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 42px;
+    width: auto;
+}
+
+.logo:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    transition: transform 150ms ease-in-out;
+}
+main {
+    flex: 1;
+    padding: 2rem 0 3rem;
+}
+
+.hero {
+    display: grid;
+    gap: 1.2rem;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0;
+}
+
+.panel {
+    padding: 1.6rem;
+    background: var(--panel);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.piano {
+    margin-top: 1.8rem;
+}
+
+.piano-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.key {
+    padding: 1.6rem 1rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: var(--blanquito);
+    transition: background 150ms ease-in-out, transform 150ms ease-in-out;
+    text-align: center;
+    cursor: pointer;
+    color: #333333;
+    font-family: "Arimo", sans-serif;
+
+}
+
+.key:hover {
+    background: var(--blanquito-hover);
+    transform: translateY(-2px);
+}
+
+.key.active {
+    background: var(--celeste-light);
+    transform: translateY(2px);
+}
+
+.key:active {
+    transform: translateY(2px);
+    background: var(--blanquito-active);
+}
+
+footer {
+    padding: 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+footer a {
+    color: var(--blanquito);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 120;
+}
+
+
+
+.modal--open {
+    display: flex;
+}
+
+.modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+}
+
+.modal__content {
+    position: relative;
+    max-width: min(520px, 92%);
+    width: 100%;
+    padding: 1.4rem 1.4rem 1.2rem;
+    background: var(--bg);
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    color: var(--text);
+    z-index: 1;
+}
+
+.modal__close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    border: none;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 70%;
+    transition: background 200ms ease;
+}
+
+.modal__close:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.modal__body {
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}

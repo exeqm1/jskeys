@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSKeys</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <a class="brand" href="#">JSKeys</a>
+                <a href="#">
+                    <img class="logo" src="/resources/logo.png" alt="Logo JSKeys" />
+                </a>
+                <nav>
+                    <a href="#" data-modal="como-jugar">Cómo usar</a>
+                    <a href="#" data-modal="sobre">Sobre</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Piano interactivo con JavaScript</h1>
+            <p>
+                Toca las teclas con el ratón o usa tu teclado para crear melodías.
+            </p>
+        </section>
+
+        <section class="panel piano" aria-label="Piano virtual">
+            <h2>Teclado</h2>
+            <div class="piano-grid">
+                <button class="key" type="button" data-note="C4">C</button>
+                <button class="key" type="button" data-note="D4">D</button>
+                <button class="key" type="button" data-note="E4">E</button>
+                <button class="key" type="button" data-note="F4">F</button>
+                <button class="key" type="button" data-note="G4">G</button>
+                <button class="key" type="button" data-note="A4">A</button>
+                <button class="key" type="button" data-note="B4">B</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 <a href="https://github.com/exeqm1" target="_blank">exeqm1</a> · JSKeys.</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="modal">
+        <div class="modal__overlay" data-close></div>
+        <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal__close" type="button" data-close>✕</button>
+            <h2 id="modal-title">Título</h2>
+            <div class="modal__body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
