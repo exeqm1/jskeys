@@ -25,3 +25,11 @@ Para mas adelante planeo incorporar mas tecnologicas y caracteristicas:
 - Herramientas que permitan modificar el ASDR de la onda. Esto permitiria tener un sonido customizable en cuanto a control de volumen (Ataque, Sustain, Delay y Release).
 - Un generador de progresion de acordes basico con triadas que duren 4 compases y se adapten a una serie de configuraciones que elija el usuario.
 - Un generador de archivo .midi para esta progresion de acordes.
+
+## Lo que aprendí en este proyecto:
+- Uso de variables en CSS y algunas caractaristicas CSS3
+- Metodología **BEM** para un CSS organizado y escalable.
+- Implementacion de ventanitas internas usando modales.
+- Uso de la **Web Audio API** para generación de sonido.
+- Uso de data-attributes (sumamente utiles para evitar codigos repetitivos).
+- Gestión de despliegue continuo con **Vercel**.
