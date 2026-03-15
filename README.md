@@ -3,7 +3,7 @@
 Proyecto de madrugada. Un piano funcional desarrollado con tecnologías web nativas. Permite tocar notas musicales tanto con el mouse como con el teclado de la computadora, incluyendo una interfaz de información mediante modales.
 
 ![jskeys-logo](/resources/logo.png)
-![jskeys](sc-pianojs.jpg)
+![jskeys](/resources/sc-pianojs.jpg)
 
 ## Demo
 https://jskeys-sandy.vercel.app/
