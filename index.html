@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
+    <script src="nexus-js/NexusUI.js"></script>
+    
 </head>
 
 <body>
@@ -36,18 +38,58 @@
             </p>
         </section>
 
-        <section class="panel piano" aria-label="Piano virtual">
+        <section class="panel-piano" aria-label="Piano virtual">
             <h2>Teclado</h2>
-            <div class="piano-grid">
-                <button class="key" type="button" data-note="C4">C</button>
-                <button class="key" type="button" data-note="D4">D</button>
-                <button class="key" type="button" data-note="E4">E</button>
-                <button class="key" type="button" data-note="F4">F</button>
-                <button class="key" type="button" data-note="G4">G</button>
-                <button class="key" type="button" data-note="A4">A</button>
-                <button class="key" type="button" data-note="B4">B</button>
+            <div id="piano">
             </div>
         </section>
+
+        <section class="panel-settings settings" aria-label="Configuración">
+            <h2>Configuración</h2>
+            <div class="content">
+                <div class="panel-box-wave-selector">
+                    <label for="wave-type-selector" class="label">Onda:</label>
+                    <div class="custom-select-wrapper" id="wave-type-selector">
+                        <div class="custom-select-header" tabindex="0">
+                            <span class="selected-value" data-value="square">Square</span>
+                            <span class="arrow-icon"></span>
+                        </div>
+                        <div class="custom-select-options">
+                            <div class="custom-option" data-value="square">Square</div>
+                            <div class="custom-option" data-value="sine">Sine</div>
+                            <div class="custom-option" data-value="sawtooth">Saw</div>
+                            <div class="custom-option" data-value="triangle">Triangle</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-box-asdr">
+                    <h3>Controlador ASDR</h3>
+                    <div class="slider-group">
+                        <label for="attack">Attack:</label>
+                        <input type="range" id="attack" class="slider" min="0" max="1" step="0.01" value="0.1">
+                        <span id="attack-value" class="value">0.1</span>
+                    </div>
+                    <div class="slider-group">
+                        <label for="decay">Decay:</label>
+                        <input type="range" id="decay" class="slider" min="0" max="1" step="0.01" value="0.1">
+                        <span id="decay-value" class="value">0.1</span>
+                    </div>
+                    <div class="slider-group">
+                        <label for="sustain">Sustain:</label>
+                        <input type="range" id="sustain" class="slider" min="0" max="1" step="0.01" value="0.5">
+                        <span id="sustain-value" class="value">0.5</span>
+                    </div>
+                    <div class="slider-group">
+                        <label for="release">Release:</label>
+                        <input type="range" id="release"  class="slider" min="0" max="1" step="0.01" value="0.5">
+                        <span id="release-value" class="value">0.5</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
     </main>
 
     <footer>
@@ -65,7 +107,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>

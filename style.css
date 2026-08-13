@@ -1,22 +1,25 @@
 :root {
     --bg: #333333;
-    --panel: rgba(255, 255, 255, 0.08);
+    --panel: #505050;
     --text: #e9eff7;
     --muted: rgba(233, 239, 247, 0.72);
     --accent: #61dafb;
     --radius: 12px;
     --shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    --shadow-light: 0 14px 30px rgba(0, 0, 0, 0.404);
     --rojo-light: #b90504;
-    --celeste-light: #9edce4;
+    --celeste-light: rgb(158, 220, 228);
     --blanquito: #e8e8e8;
     --blanquito-hover: #c0c0c0;
     --blanquito-active: #a0a0a0;
+    --negrito: #252525;
 
 }
 
 * {
     box-sizing: border-box;
 }
+
 
 body {
     margin: 0;
@@ -87,6 +90,7 @@ nav a:hover {
     transform: translate(-50%, -50%) scale(1.05);
     transition: transform 150ms ease-in-out;
 }
+
 main {
     flex: 1;
     padding: 2rem 0 3rem;
@@ -104,26 +108,99 @@ main {
     margin: 0;
 }
 
-.panel {
+.panel-piano {
     padding: 1.6rem;
     background: var(--panel);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.panel-settings {
+    padding: 15px;
+    background: var(--panel);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 75px;
+}
+
+.content {
+    display: flex;
+    gap: 2rem;
+}
+
+.panel-settings h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.panel-settings h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: lighter;
+    font-size: 16px;
+}
+
+.panel-box-asdr {
+    padding: 1.6rem;
+    background: var(--panel);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-light);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+}
+
+.panel-box-wave-selector {
+    padding: 1.6rem;
+    background: var(--panel);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-light);
+    display: flex;
+    align-items: center;
+    /* Centra los elementos horizontalmente */
+}
+
+
+
+.label {
+    display: block;
+    margin-bottom: 0.4rem;
+    margin-right: 10px;
+    margin-top: 3px;
+    font-size: 16px;
+}
+
+.settings {
+    margin-top: 1.0rem;
 }
 
 .piano {
-    margin-top: 1.8rem;
+
 }
 
-.piano-grid {
-    display: grid;
+.piano-grid-blancas {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
+
 }
 
-.key {
-    padding: 1.6rem 1rem;
+.piano-grid-negras {
+    margin-left: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.key-blancas {
+    margin-top: 30px;
+    height: 150px;
+    width: 40px;
+    padding: 1.6rem;
     border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     background: var(--blanquito);
@@ -131,8 +208,22 @@ main {
     text-align: center;
     cursor: pointer;
     color: #333333;
-    font-family: "Arimo", sans-serif;
+    font-family: "Arimo", sans-serif;    
+}
 
+.key-negras {
+    margin-top: 30px;
+    height: 150px;
+    width: 40px;
+    padding: 1.6rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: var(--negrito);
+    transition: background 150ms ease-in-out, transform 150ms ease-in-out;
+    text-align: center;
+    cursor: pointer;
+    color: var(--blanquito);
+    font-family: "Arimo", sans-serif;  
 }
 
 .key:hover {
@@ -224,9 +315,10 @@ footer a:hover {
     line-height: 1.6;
 }
 
+
+
 @media (max-width: 600px) {
     .navbar {
-        flex-direction: column;
         align-items: flex-start;
     }
 
@@ -235,4 +327,189 @@ footer a:hover {
         flex-wrap: wrap;
         gap: 0.5rem;
     }
+}
+
+.custom-select-wrapper {
+    position: relative;
+    width: 120px;
+    max-width: 120px;
+    /* Limita el ancho para que sea fijo y no se estire */
+    font-family: "Arimo", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    user-select: none;
+    /* Evita la selección de texto */
+    flex-shrink: 0;
+    /* Evita que el elemento se encoja */
+    flex-grow: 0;
+    /* Evita que el elemento crezca */
+}
+
+.custom-select-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--panel);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius);
+    padding: 0.6rem 1rem;
+    font-family: "Arimo", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: background 150ms ease-in-out, border-color 150ms ease-in-out, color 150ms ease-in-out;
+    outline: none;
+    width: 100%;
+    /* Asegura que ocupe el 100% del ancho de su padre */
+}
+
+.custom-select-header:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.selected-value {
+    flex-grow: 1;
+    overflow: hidden;
+    /* Oculta el contenido que se desborda */
+    white-space: nowrap;
+    /* Evita que el texto se envuelva */
+    text-overflow: ellipsis;
+    /* Muestra puntos suspensivos (...) para el texto recortado */
+}
+
+.arrow-icon {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--text);
+    margin-left: 10px;
+    transition: transform 0.2s ease;
+}
+
+.custom-select-header.open .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.custom-select-options {
+    display: none;
+    /* Oculto por defecto */
+    position: absolute;
+    top: 100%;
+    /* Debajo del header */
+    left: 0;
+    right: 0;
+    background-color: var(--panel);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    z-index: 10;
+    /* Asegura que esté por encima de otros elementos */
+    margin-top: 5px;
+    /* Pequeño espacio entre header y opciones */
+    overflow: hidden;
+    /* Para que los bordes redondeados se apliquen bien */
+}
+
+.custom-select-options.open {
+    display: block;
+}
+
+.custom-option {
+    padding: 0.6rem 1rem;
+    color: var(--text);
+    transition: background 150ms ease-in-out;
+}
+
+.custom-option:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.custom-option.selected {
+    background: var(--accent);
+    color: var(--bg);
+    /* Texto oscuro sobre el acento */
+}
+
+/* Estilos para el label, si no lo tienes ya */
+.label {
+    display: block;
+    margin-bottom: 0.4rem;
+    /* margin-right: 10px;  Eliminar si el label está encima del select */
+    /* margin-top: 3px; Eliminar si el label está encima del select */
+    font-size: 16px;
+    text-align: center;
+    /* Centrar el texto del label */
+    width: 100%;
+    /* Asegura que ocupe todo el ancho para centrar */
+}
+
+.slider-group {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.slider {
+    cursor: pointer;
+    border-radius: 0.5rem;
+    -webkit-appearance: none;
+    /* Elimina la apariencia por defecto en WebKit */
+    -moz-appearance: none;
+    /* Elimina la apariencia por defecto en Firefox */
+    appearance: none;
+    /* Elimina la apariencia por defecto (estándar) */
+    width: 80%;
+    /* Asegura que ocupe todo el ancho de su contenedor */
+    background: transparent;
+    /* Hace el fondo del slider transparente para que el gradiente de la pista sea visible */
+    --progress: 0%; 
+    margin: 10px 0px 10px 0px;
+}
+
+.slider::-webkit-slider-runnable-track {
+    height: 0.4rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(to right, 
+        var(--accent) var(--progress), 
+        var(--blanquito-hover) var(--progress));       
+}
+
+.slider::-moz-range-track {
+    height: 0.4rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(to right, 
+        var(--accent) var(--progress), 
+        var(--blanquito-hover) var(--progress));      
+}
+
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    margin-top: -4px;
+    background-color: #6e6e6e;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    border: 2px solid #f8f8f2;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 0 rgba(189, 147, 249, 0);
+}
+
+.slider::-moz-range-thumb {
+    background-color: #6e6e6e;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    border: 2px solid #f8f8f2;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 0 rgba(189, 147, 249, 0);
+}
+
+.slider:active::-webkit-slider-thumb {
+    background: var(--accent);
+    transform: scale(1.1);
 }
