@@ -39,55 +39,84 @@
         </section>
 
         <section class="panel-piano" aria-label="Piano virtual">
-            <h2>Teclado</h2>
-            <div id="piano">
+            <div class="piano-layout">
+                <div class="piano-stage">
+                    <h2>Teclado</h2>
+                    <div id="piano"></div>
+                </div>
+
+                <aside class="piano-controls" aria-label="Controles del piano">
+                    <div class="micro-control">
+                        <label class="label" for="wave-type-selector">Onda</label>
+                        <div class="custom-select-wrapper" id="wave-type-selector">
+                            <div class="custom-select-header" tabindex="0">
+                                <span class="selected-value" data-value="square">Square</span>
+                                <span class="arrow-icon"></span>
+                            </div>
+                            <div class="custom-select-options">
+                                <div class="custom-option" data-value="square">Square</div>
+                                <div class="custom-option" data-value="sine">Sine</div>
+                                <div class="custom-option" data-value="sawtooth">Saw</div>
+                                <div class="custom-option" data-value="triangle">Triangle</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="micro-control">
+                        <label class="label">Gain</label>
+                        <div id="gain-dial" class="gain-dial"></div>
+                    </div>
+                </aside>
             </div>
         </section>
 
         <section class="panel-settings settings" aria-label="Configuración">
             <h2>Configuración</h2>
             <div class="content">
-                <div class="panel-box-wave-selector">
-                    <label for="wave-type-selector" class="label">Onda:</label>
-                    <div class="custom-select-wrapper" id="wave-type-selector">
-                        <div class="custom-select-header" tabindex="0">
-                            <span class="selected-value" data-value="square">Square</span>
-                            <span class="arrow-icon"></span>
+                <div class="settings-stack">
+                    <div class="panel-box-asdr">
+                        <h3>Controlador ASDR</h3>
+                        <div class="dial-group">
+                            <label>Attack</label>
+                            <div id="attack-dial" class="nexus-dial"></div>
+                            <span id="attack-value" class="value">0.1</span>
                         </div>
-                        <div class="custom-select-options">
-                            <div class="custom-option" data-value="square">Square</div>
-                            <div class="custom-option" data-value="sine">Sine</div>
-                            <div class="custom-option" data-value="sawtooth">Saw</div>
-                            <div class="custom-option" data-value="triangle">Triangle</div>
+                        <div class="dial-group">
+                            <label>Decay</label>
+                            <div id="decay-dial" class="nexus-dial"></div>
+                            <span id="decay-value" class="value">0.1</span>
+                        </div>
+                        <div class="dial-group">
+                            <label>Sustain</label>
+                            <div id="sustain-dial" class="nexus-dial"></div>
+                            <span id="sustain-value" class="value">0.5</span>
+                        </div>
+                        <div class="dial-group">
+                            <label>Release</label>
+                            <div id="release-dial" class="nexus-dial"></div>
+                            <span id="release-value" class="value">0.5</span>
                         </div>
                     </div>
-                </div>
 
-                <div class="panel-box-asdr">
-                    <h3>Controlador ASDR</h3>
-                    <div class="slider-group">
-                        <label for="attack">Attack:</label>
-                        <input type="range" id="attack" class="slider" min="0" max="1" step="0.01" value="0.1">
-                        <span id="attack-value" class="value">0.1</span>
+                    <div class="panel-box-lpf">
+                        <h3>LPF</h3>
+                        <div class="dial-group">
+                            <label>Cutoff</label>
+                            <div id="cutoff-dial" class="nexus-dial"></div>
+                            <span id="cutoff-value" class="value">2200</span>
+                        </div>
+                        <div class="dial-group">
+                            <label>Resonance</label>
+                            <div id="resonance-dial" class="nexus-dial"></div>
+                            <span id="resonance-value" class="value">1.5</span>
+                        </div>
                     </div>
-                    <div class="slider-group">
-                        <label for="decay">Decay:</label>
-                        <input type="range" id="decay" class="slider" min="0" max="1" step="0.01" value="0.1">
-                        <span id="decay-value" class="value">0.1</span>
-                    </div>
-                    <div class="slider-group">
-                        <label for="sustain">Sustain:</label>
-                        <input type="range" id="sustain" class="slider" min="0" max="1" step="0.01" value="0.5">
-                        <span id="sustain-value" class="value">0.5</span>
-                    </div>
-                    <div class="slider-group">
-                        <label for="release">Release:</label>
-                        <input type="range" id="release"  class="slider" min="0" max="1" step="0.01" value="0.5">
-                        <span id="release-value" class="value">0.5</span>
-                    </div>
+
+                    <div class="panel-box-oscilloscope">
+                        <h3>Waveform</h3>
+                        <div id="oscilloscope" class="oscilloscope">
                 </div>
             </div>
-
         </section>
 
     </main>

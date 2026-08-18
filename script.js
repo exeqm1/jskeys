@@ -6,13 +6,17 @@ const sliderValues = {
   decay: 0.1,
   sustain: 0.5,
   release: 0.5,
+  cutoff: 2200,
+  resonance: 1.5,
 };
 
 window.getSynthSettings = () => ({
-  a: Number(document.querySelector('#attack')?.value ?? sliderValues.attack),
-  d: Number(document.querySelector('#decay')?.value ?? sliderValues.decay),
-  s: Number(document.querySelector('#sustain')?.value ?? sliderValues.sustain),
-  r: Number(document.querySelector('#release')?.value ?? sliderValues.release),
+  a: Number(window.controlValues?.attack ?? sliderValues.attack),
+  d: Number(window.controlValues?.decay ?? sliderValues.decay),
+  s: Number(window.controlValues?.sustain ?? sliderValues.sustain),
+  r: Number(window.controlValues?.release ?? sliderValues.release),
+  cutoff: Number(window.controlValues?.cutoff ?? sliderValues.cutoff),
+  resonance: Number(window.controlValues?.resonance ?? sliderValues.resonance),
 });
 
 const modal = document.getElementById("modal");
@@ -132,40 +136,14 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-const sliders = document.querySelectorAll(".slider");
+const grupos = document.querySelectorAll('.dial-group');
 
-sliders.forEach((slider) => {
-  function updateProgress() {
-    const progreso = slider.value * 100;
-    slider.style.setProperty("--progress", progreso + "%");
+grupos.forEach((grupo) => {
+  const valueNode = grupo.querySelector('.value');
+  const dial = grupo.querySelector('.nexus-dial');
+
+  if (dial && valueNode) {
+    valueNode.textContent = valueNode.textContent.trim();
   }
-
-  slider.addEventListener("input", () => {
-    updateProgress();
-
-    const sliderId = slider.id;
-    if (sliderId in sliderValues) {
-      sliderValues[sliderId] = Number(slider.value);
-    }
-
-    const visor = document.getElementById(`${sliderId}-value`);
-    if (visor) {
-      visor.textContent = slider.value;
-    }
-  });
-
-  updateProgress();
-});
-
-// 1. Seleccionamos todos los grupos de sliders
-const grupos = document.querySelectorAll('.slider-group');
-
-grupos.forEach(grupo => {
-    const slider = grupo.querySelector('input[type="range"]');
-    const visor = grupo.querySelector('.value');
-
-    slider.addEventListener('input', () => {
-        visor.textContent = slider.value;
-    });
 });
 
